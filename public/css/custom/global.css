@@ -1,0 +1,11 @@
+/*===================================================================
+							FONTS 
+  =================================================================*/
+@font-face {
+	font-family: 'CardenioModern'; /*Font for the image of London*/
+	src: url('/fonts/cardenio_modern/Cardenio Modern Std.ttf');
+}
+
+body {
+	background-color: rgb(241, 235, 218); /*Beige*/
+}

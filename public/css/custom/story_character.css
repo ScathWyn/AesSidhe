@@ -1,0 +1,13 @@
+.image-wrapper{
+overflow:hidden;
+}
+
+.moving-effect{
+	filter: grayscale(100%);
+	transition: 300ms ease-out;
+}
+
+.moving-effect:hover {
+	filter: grayscale(0%);
+	transform: scale(1.1);
+ }
