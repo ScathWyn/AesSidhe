@@ -1,13 +1,13 @@
-.image-wrapper{
+.overflow-is-hidden{
 overflow:hidden;
 }
 
-.moving-effect{
+.coloring-zooming-effect{
 	filter: grayscale(100%);
 	transition: 300ms ease-out;
 }
 
-.moving-effect:hover {
+.coloring-zooming-effect:hover {
 	filter: grayscale(0%);
 	transform: scale(1.1);
  }

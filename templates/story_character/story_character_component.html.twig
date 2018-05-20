@@ -1,11 +1,11 @@
 <div class="row align-items-center justify-content-center">
-	<div class="col-md-8">
-		<div class="image-wrapper">
-			<img src="{{ asset('images/' ~ storyCharacter.image) }}" class="img-fluid moving-effect" alt="Character image">
+	<figure class="col-md-8">
+		<div class="overflow-is-hidden">
+			<img src="{{ asset('images/' ~ storyCharacter.image) }}" class="img-fluid coloring-zooming-effect" alt="Character image">
 		</div>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item"><h2>{{ storyCharacter.nickName }}</h2></li>
 			<li class="list-group-item"><h4>{{ storyCharacter.firstName }} {{ storyCharacter.lastName }}</h4></li>
 		</ul>
-	</div>
+	</figure>
 </div>

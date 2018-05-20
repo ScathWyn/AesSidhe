@@ -6,6 +6,6 @@
 	src: url('/fonts/cardenio_modern/Cardenio Modern Std.ttf');
 }
 
-body {
-	background-color: rgb(241, 235, 218); /*Beige*/
+main {
+	background-color: rgb(241, 235, 218); /*Buttery white*/
 }
