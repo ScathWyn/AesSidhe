@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+{# Image #}
+<div class="row" >
+	<figure class="col px-0">
+		<img src="{{ asset('images/london.jpg') }}" class="img-fluid"</img>
+		<figcaption class="img-overlay w-100">
+			<h2 class="pl-20"><b>Chapitre 2 </b></h2>
+			<h1 class="pl-25 font-image"> Arrivée à londres </h1>
+		</figcaption>
+	</figure>
+</div>
+<div class="row justify-content-center">
+	<div class="col-md-6">
+		<h3 class="text-center red-blood">Nullam placerat convallis condimentum</h3>
+		<h5> 
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in bibendum nunc. Pellentesque quis urna sit amet nisi aliquet consectetur ut eget erat. Nunc tristique lectus a ipsum lacinia bibendum. Nulla ex arcu, rutrum at erat a, semper elementum orci. In molestie a massa nec hendrerit. Nullam placerat convallis condimentum. Sed vestibulum semper tristique. Cras sed porta risus, a euismod magna. Nam id lacus quis justo blandit sollicitudin. Proin dapibus tellus vel felis dignissim elementum. Etiam interdum at sem eu condimentum. Phasellus hendrerit, erat nec rutrum tincidunt, turpis enim rutrum dui, vitae fringilla dolor nisi rhoncus nulla. Ut ac lacinia odio. 
+		</h5>
+	</div>
+</div>
+
+{# More about this story #}
+<div class="row">
+	<div class="col">
+		{#loremIpsum Text#}
+		{% include 'lorem_ipsum.html' %}
+	</div>
+</div>
+{# Choose your action #}
+<div class="row justify-content-center background-white">
+	<div class="col-md-10">
+		<div class="row">
+			<div class="col-md-4 background-buttery-white p-4 my-4">
+				<h2>Aller à gauche</h2>
+				<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in bibendum nunc. Pellentesque quis urna sit amet nisi aliquet consectetur ut eget erat. Nunc tristique lectus a ipsum lacinia bibendum. Nulla ex arcu, rutrum at erat a, semper elementum orci. In molestie a massa nec hendrerit. Nullam placerat convallis condimentum. Sed vestibulum semper tristique. Cras sed porta risus, a euismod magna.
+				</h5>
+			</div>
+			<div class="col-md-4 background-buttery-white p-4 my-4">
+				<h2>Aller à gauche</h2>
+				<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in bibendum nunc. Pellentesque quis urna sit amet nisi aliquet consectetur ut eget erat. Nunc tristique lectus a ipsum lacinia bibendum. Nulla ex arcu, rutrum at erat a, semper elementum orci. In molestie a massa nec hendrerit. Nullam placerat convallis condimentum. Sed vestibulum semper tristique. Cras sed porta risus, a euismod magna.
+				</h5>
+			</div>
+			<div class="col-md-4 background-buttery-white p-4 my-4">
+				<h2>Aller à gauche</h2>
+				<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in bibendum nunc. Pellentesque quis urna sit amet nisi aliquet consectetur ut eget erat. Nunc tristique lectus a ipsum lacinia bibendum. Nulla ex arcu, rutrum at erat a, semper elementum orci. In molestie a massa nec hendrerit. Nullam placerat convallis condimentum. Sed vestibulum semper tristique. Cras sed porta risus, a euismod magna.
+				</h5>
+			</div>	
+		</div>
+	</div>
+</div>
+	
+
+
+{% endblock %}

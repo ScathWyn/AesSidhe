@@ -6,6 +6,23 @@
 	src: url('/fonts/cardenio_modern/Cardenio Modern Std.ttf');
 }
 
-main {
+main, .background-buttery-white {
 	background-color: rgb(241, 235, 218); /*Buttery white*/
 }
+
+.background-white {
+	background-color: white
+}
+
+.pl-20 {
+  padding-left: 20rem !important;
+}
+
+.pl-25 {
+  padding-left: 25rem !important;
+}
+
+.red-blood{
+	color: rgb(142, 22, 22); /*Red blood*/
+}
+
