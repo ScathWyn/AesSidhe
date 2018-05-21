@@ -20,6 +20,10 @@ security:
             pattern:    ^/
             http_basic: ~
             provider: our_db_provider
+           
+            logout:
+                path:   /logout
+                target: /
 
             # activate different ways to authenticate
 

@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @ORM\Table(name="aes_user")
@@ -36,7 +35,7 @@ class User implements UserInterface, \Serializable
     private $plainPassword;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -175,14 +174,5 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized, ['allowed_classes' => false]);
     }
-
-	public function register(UserPasswordEncoderInterface $encoder)
-	{
-		$encoded = $encoder->encodePassword($this, $this->getPlainPassword());
-		$this->setPassword($encoded);
-		return $this;
-	}
-
-	
 	
 }
