@@ -1,0 +1,4 @@
+https://symfony.com/doc/current/forms.html
+https://symfony.com/doc/current/doctrine/registration_form.html
+https://symfony.com/doc/current/security/password_encoding.html --> Not sure that this method should remain in password
+https://symfony.com/doc/current/security.html --> keep on going
