@@ -16,19 +16,23 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            provider: our_db_provider
             anonymous: ~
             form_login:
                 login_path: sign_in
                 check_path: sign_in
+                default_target_path: /
                 # field names for the username and password fields
                 username_parameter: form[_username]
                 password_parameter: form[_password]
-            
-            provider: our_db_provider
-           
             logout:
                 path:   sign_out
                 target: /
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 31536000 # 1 year.
+                path:     /
+                remember_me_parameter: form[_remember_me]
 
             # activate different ways to authenticate
 

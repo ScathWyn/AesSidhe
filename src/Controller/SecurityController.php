@@ -12,6 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 
 class SecurityController extends Controller
 {
@@ -27,14 +31,15 @@ class SecurityController extends Controller
 		// last username entered by the user
 		$lastUsername = $authenticationUtils->getLastUsername();
 
-        $form = $this->createFormBuilder(['_username' => $lastUsername])
+        $signInForm = $this->createFormBuilder(['_username' => $lastUsername])
             ->add('_username', TextType::class, array('label' => 'Login'))		
-			->add('_password', TextType::class, array('label' => 'Mot de passe'))
+			->add('_password', PasswordType::class, array('label' => 'Mot de passe'))
+			->add('_remember_me', CheckboxType::class, array('label' => 'Se souvenir', 'required' => false))
             ->add('save', SubmitType::class, ['label' => 'Valider'])
             ->getForm();
 		
 		return $this->render('security/sign_in/index.html.twig', [
-			'form' => $form->createView(),
+			'signInForm' => $signInForm->createView(),
 			'error' => $error,
         ]);
     }
@@ -54,18 +59,24 @@ class SecurityController extends Controller
     {
 		$user = new User();
 
-        $form = $this->createFormBuilder($user)
+        $registerForm = $this->createFormBuilder($user)
             ->add('username', TextType::class, array('label' => 'Login'))		
-			->add('plainPassword', TextType::class, array('label' => 'Mot de passe'))
+			->add('plainPassword', RepeatedType::class, array(
+				'type' => PasswordType::class,
+				'invalid_message' => 'Les deux champs du mot de passe doivent être identiques.',
+				'options' => array('attr' => array('class' => 'password-field')),
+				'first_options'  => array('label' => 'Mot de passe'),
+				'second_options' => array('label' => 'Confirmation du mot de passe'),
+				))
 			->add('email', TextType::class)
             ->add('save', SubmitType::class, ['label' => 'Valider'])
             ->getForm();	
 
 
-		$form->handleRequest($request);
+		$registerForm->handleRequest($request);
 
-		if ($form->isSubmitted() && $form->isValid()) {
-			$user = $form->getData();
+		if ($registerForm->isSubmitted() && $registerForm->isValid()) {
+			$user = $registerForm->getData();
 			
 			/* Hashing the password */
 		    $encoder = $this->container->get('security.password_encoder');
@@ -80,7 +91,7 @@ class SecurityController extends Controller
 		}			
 			
         return $this->render('security/register/index.html.twig', [
-			'form' => $form->createView(),
+			'registerForm' => $registerForm->createView(),
         ]);
     }
 }
