@@ -16,13 +16,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
-            pattern:    ^/
-            http_basic: ~
+            anonymous: ~
+            form_login:
+                login_path: sign_in
+                check_path: sign_in
+            
             provider: our_db_provider
            
             logout:
-                path:   /logout
+                path:   sign_out
                 target: /
 
             # activate different ways to authenticate

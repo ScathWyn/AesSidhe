@@ -20,10 +20,20 @@
 					Admin
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="{{ path('connection') }}">Connexion</a>
 					<a class="dropdown-item" href="#">Another action</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown mx-3">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Compte
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="{{ path('sign_in') }}">Se connecter</a>
+					<a class="dropdown-item" href="{{ path('sign_out') }}">Se déconnecter</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="{{ path('register') }}">Créer un compte</a>
 				</div>
 			</li>
 		</ul>
