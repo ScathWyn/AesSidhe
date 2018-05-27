@@ -25,13 +25,13 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=25, unique=true)
 	 * @Assert\NotBlank()
-	 * @Assert\Length(max=25, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
+	 * @Assert\Length(max=25)
      */
     private $username;
 	
 	/**
      * @Assert\NotBlank()
-	 * @Assert\Length(max=255, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
+	 * @Assert\Length(max=255)
     */
     private $plainPassword;
 
@@ -43,8 +43,8 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255, unique=true)
 	 * @Assert\NotBlank()
-	 * @Assert\Length(max=255, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
-	 * @Assert\Email(message = "L'email {{ value }} n'est pas valide")
+	 * @Assert\Length(max=255)
+	 * @Assert\Email()
      */
     private $email;
 	

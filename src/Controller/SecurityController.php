@@ -26,10 +26,16 @@ class SecurityController extends Controller
 
 		// last username entered by the user
 		$lastUsername = $authenticationUtils->getLastUsername();
+
+        $form = $this->createFormBuilder(['_username' => $lastUsername])
+            ->add('_username', TextType::class, array('label' => 'Login'))		
+			->add('_password', TextType::class, array('label' => 'Mot de passe'))
+            ->add('save', SubmitType::class, ['label' => 'Valider'])
+            ->getForm();
 		
-        return $this->render('security/sign_in/index.html.twig', [
-            'last_username' => $lastUsername,
-			'error'         => $error,
+		return $this->render('security/sign_in/index.html.twig', [
+			'form' => $form->createView(),
+			'error' => $error,
         ]);
     }
 	

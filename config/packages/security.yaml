@@ -20,6 +20,9 @@ security:
             form_login:
                 login_path: sign_in
                 check_path: sign_in
+                # field names for the username and password fields
+                username_parameter: form[_username]
+                password_parameter: form[_password]
             
             provider: our_db_provider
            
