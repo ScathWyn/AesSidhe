@@ -10,7 +10,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SecurityController extends Controller
 {
@@ -46,15 +47,12 @@ class SecurityController extends Controller
     public function register(Request $request)
     {
 		$user = new User();
-        $user->setUsername('MyUsername');
-		$user->setPlainPassword('PlainPassword');
-		$user->setEmail('test@email.fr');
 
         $form = $this->createFormBuilder($user)
-            ->add('username', TextType::class)
-			->add('plainPassword', TextType::class)
+            ->add('username', TextType::class, array('label' => 'Login'))		
+			->add('plainPassword', TextType::class, array('label' => 'Mot de passe'))
 			->add('email', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create User'))
+            ->add('save', SubmitType::class, ['label' => 'Valider'])
             ->getForm();	
 
 

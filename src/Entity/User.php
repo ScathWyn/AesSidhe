@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="aes_user")
- * @UniqueEntity(fields="username", message="Username already taken")
- * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Login déjà pris, veuillez en choisir un autre")
+ * @UniqueEntity(fields="email", message="Email déjà pris, veuillez en choisir un autre")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
@@ -25,12 +25,13 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=25, unique=true)
 	 * @Assert\NotBlank()
+	 * @Assert\Length(max=25, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
      */
     private $username;
 	
 	/**
      * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+	 * @Assert\Length(max=255, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
     */
     private $plainPassword;
 
@@ -42,7 +43,8 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255, unique=true)
 	 * @Assert\NotBlank()
-	 * @Assert\Email()
+	 * @Assert\Length(max=255, maxMessage="Cette valeur est trop grande, veuillez écrire {{ limit }} caractères ou moins.")
+	 * @Assert\Email(message = "L'email {{ value }} n'est pas valide")
      */
     private $email;
 	

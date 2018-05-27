@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+<div class="row" >
+	<div class="col-md-3">
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		{{ form_end(form) }}
+	</div>
+</div>
 {% endblock %}
