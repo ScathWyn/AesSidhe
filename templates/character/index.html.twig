@@ -9,10 +9,10 @@
 </div>
 {# Pick you character row #}
 <div class="row">
-	{% for storyCharacter in storyCharacters %}
+	{% for character in characters %}
 	<div class="col-md-4">
-		{#storyCharacterComponent#}
-		{% include 'story_character/story_character_component.html.twig' %}
+		{#characterComponent#}
+		{% include 'character/character_component.html.twig' %}
 	</div>
 	{% endfor %}
 </div>

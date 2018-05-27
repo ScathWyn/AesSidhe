@@ -5,9 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\StoryCharacterRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CharacterRepository")
+ * @ORM\Table(name="aes_character")
  */
-class StoryCharacter
+class Character
 {
     /**
      * @ORM\Id()
@@ -29,7 +30,7 @@ class StoryCharacter
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $nickName;
+    private $nickname;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -70,14 +71,14 @@ class StoryCharacter
         return $this;
     }
 
-    public function getNickName(): ?string
+    public function getNickname(): ?string
     {
-        return $this->nickName;
+        return $this->nickname;
     }
 
-    public function setNickName(?string $nickName): self
+    public function setNickname(?string $nickName): self
     {
-        $this->nickName = $nickName;
+        $this->nickname = $nickname;
 
         return $this;
     }
