@@ -13,7 +13,7 @@ class LandingPageController extends Controller
     public function index()
     {
         return $this->render('landing_page/index.html.twig', [
-            'controller_name' => 'LandingPageController',
+            'controller_name' => $_SERVER['MAILER_PASSWORD'],
         ]);
     }
 }
