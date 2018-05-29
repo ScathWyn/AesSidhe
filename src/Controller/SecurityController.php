@@ -16,7 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
-
 class SecurityController extends Controller
 {
     /**
@@ -100,34 +99,39 @@ class SecurityController extends Controller
      */
 	public function sendEmail(\Swift_Mailer $mailer)
 	{
-    $message = (new \Swift_Message('Hello Email'))
-        ->setFrom('aessidhemailer@gmail.com')
-        ->setTo('aessidhemailer@gmail.com')
-        ->setBody(
-            $this->renderView(
-                // templates/emails/registration.html.twig
-                'emails/registration.html.twig',
-                array('name' => 'TestEmail')
-            ),
-            'text/html'
-        )
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
-    ;
+		$message = (new \Swift_Message('Hello Email'))
+			->setFrom('aessidhemailer@gmail.com')
+			->setTo('aessidhemailer@gmail.com')
+			->setBody(
+				$this->renderView(
+					// templates/emails/registration.html.twig
+					'emails/registration.html.twig',
+					array('name' => 'TestEmail')
+				),
+				'text/html'
+			)
+			/*
+			 * If you also want to include a plaintext version of the message
+			->addPart(
+				$this->renderView(
+					'emails/registration.txt.twig',
+					array('name' => $name)
+				),
+				'text/plain'
+			)
+			*/
+		;	
+		$mailer->send($message);		
+		return $this->redirectToRoute('landing_page');
+	}
 
-    $mailer->send($message);
 
-    return $this->redirectToRoute('landing_page');
-}
-	
+// public function logg(LoggerInterface $logger)
+// {
+    // $logger->info('I just got the logger');
+    // $logger->error('An error occurred');
+
+// }
 	
 	
 	
