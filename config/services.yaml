@@ -2,7 +2,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
-    MAILER_URL: gmail://aessidhemailer@gmail.com:aesSidheSwiftMailer@localhost
+    mailer.url: gmail://aessidhemailer@gmail.com:aesSidheSwiftMailer@localhost
+    mailer.sender: aessidhemailer@gmail.com
 
 services:
     # default configuration for services in *this* file

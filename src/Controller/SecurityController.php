@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\MailGenerator;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -97,45 +99,14 @@ class SecurityController extends Controller
 	/**
      * @Route("/mail", name="mail", host="aesSidhe.fr")
      */
-	public function sendEmail(\Swift_Mailer $mailer)
+	public function sendEmail(MailGenerator $mailGenerator)
 	{
-		$message = (new \Swift_Message('Hello Email'))
-			->setFrom('aessidhemailer@gmail.com')
-			->setTo('aessidhemailer@gmail.com')
-			->setBody(
-				$this->renderView(
-					// templates/emails/registration.html.twig
-					'emails/registration.html.twig',
-					array('name' => 'TestEmail')
-				),
-				'text/html'
-			)
-			/*
-			 * If you also want to include a plaintext version of the message
-			->addPart(
-				$this->renderView(
-					'emails/registration.txt.twig',
-					array('name' => $name)
-				),
-				'text/plain'
-			)
-			*/
-		;	
-		$mailer->send($message);		
+		$user = new User();
+		$user->setUsername('Toto');
+		$user->setEmail('aessidhemailer@gmail.com');
+
+		$mailGenerator->createMailAndSendTo('accountCreation', $user);
 		return $this->redirectToRoute('landing_page');
 	}
-
-
-// public function logg(LoggerInterface $logger)
-// {
-    // $logger->info('I just got the logger');
-    // $logger->error('An error occurred');
-
-// }
-	
-	
-	
-	
-	
 	
 }
