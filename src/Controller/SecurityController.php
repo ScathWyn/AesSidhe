@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Service\MailGenerator;
+use App\Service\MailerService;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -56,7 +56,7 @@ class SecurityController extends Controller
 	/**
      * @Route("/register", name="register", host="aesSidhe.fr")
      */
-    public function register(Request $request)
+    public function register(Request $request, MailerService $mailerService)
     {
 		$user = new User();
 
@@ -87,6 +87,8 @@ class SecurityController extends Controller
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($user);
 			$entityManager->flush();
+			
+			$mailerService->createEmailAndSendTo('accountCreation', $user);
 
 			return $this->redirectToRoute('landing_page');
 		}			
@@ -99,14 +101,14 @@ class SecurityController extends Controller
 	/**
      * @Route("/mail", name="mail", host="aesSidhe.fr")
      */
-	public function sendEmail(MailGenerator $mailGenerator)
-	{
-		$user = new User();
-		$user->setUsername('Toto');
-		$user->setEmail('aessidhemailer@gmail.com');
+	// public function sendEmail(MailerService $mailerService)
+	// {
+		// $user = new User();
+		// $user->setUsername('Toto');
+		// $user->setEmail('test@gmail.com');
 
-		$mailGenerator->createMailAndSendTo('accountCreation', $user);
-		return $this->redirectToRoute('landing_page');
-	}
+		// $mailerService->createEmailAndSendTo('accountCreation', $user);
+		// return $this->redirectToRoute('landing_page');
+	// }
 	
 }
