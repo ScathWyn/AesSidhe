@@ -76,7 +76,7 @@ class Character
         return $this->nickname;
     }
 
-    public function setNickname(?string $nickName): self
+    public function setNickname(?string $nickname): self
     {
         $this->nickname = $nickname;
 

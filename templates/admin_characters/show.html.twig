@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="row">
+	<div class="col-md-6">
+		{{ character.firstName }} {{ character.lastName }}, {{ character.nickname }} <br>
+		Description : "{{character.description}}" <br>
+		Lien image : "{{character.image}}"
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<a class="btn btn-warning" href="{{ path('admin_character_update', { 'id': character.id }) }}" role="button">Edit</a>
+		<a class="btn btn-danger" href="{{ path('admin_character_delete', { 'id': character.id }) }}" role="button">Delete</a>
+	</div>
+</div>
+{% endblock %}

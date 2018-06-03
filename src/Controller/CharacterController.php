@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Character;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\Character;
 
 class CharacterController extends Controller
 {

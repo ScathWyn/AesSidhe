@@ -6,8 +6,8 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active mx-3">
-				<a class="nav-link" href="{{ path('landing_page') }}">Home <span class="sr-only">(current)</span></a>
+			<li class="nav-item mx-3">
+				<a class="nav-link " href="{{ path('landing_page') }}">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item mx-3">
 				<a class="nav-link" href="{{ path('character') }}">Personnage</a>
@@ -20,7 +20,7 @@
 					Admin
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="{{ path('admin_characters') }}">Show characters</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
 				</div>
