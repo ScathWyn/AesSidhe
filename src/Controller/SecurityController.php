@@ -62,7 +62,7 @@ class SecurityController extends Controller
     {
 		$user = new User();
 
-        $registerForm = $this->createFormBuilder($user)
+        $registerForm = $this->createFormBuilder($user, array('validation_groups' => array('registration')))
             ->add('username', TextType::class, array('label' => 'Login'))		
 			->add('plainPassword', RepeatedType::class, array(
 				'type' => PasswordType::class,

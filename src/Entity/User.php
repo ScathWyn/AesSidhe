@@ -24,14 +24,14 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
-	 * @Assert\NotBlank()
-	 * @Assert\Length(max=25)
+	 * @Assert\NotBlank(groups={"registration", "default"})
+	 * @Assert\Length(max=25, groups={"registration", "default"})
      */
     private $username;
 	
 	/**
-     * @Assert\NotBlank()
-	 * @Assert\Length(max=255)
+     * @Assert\NotBlank(groups={"registration"})
+	 * @Assert\Length(max=255, groups={"registration"})
     */
     private $plainPassword;
 
@@ -42,9 +42,9 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-	 * @Assert\NotBlank()
-	 * @Assert\Length(max=255)
-	 * @Assert\Email()
+	 * @Assert\NotBlank(groups={"registration", "default"})
+	 * @Assert\Length(max=255, groups={"registration", "default"})
+	 * @Assert\Email(groups={"registration", "default"})
      */
     private $email;
 	
